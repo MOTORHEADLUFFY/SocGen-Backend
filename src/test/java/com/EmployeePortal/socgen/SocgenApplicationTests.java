@@ -1,6 +1,7 @@
 package com.EmployeePortal.socgen;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
@@ -35,6 +36,7 @@ class SocgenApplicationTests {
     	employee.setDateOfBirth(new Date());
     	
     	assertEquals("0", employeeController.postEmployee(employee).getResponseCode());
+    	assertTrue(employeeController.getAllEmployees().size()>1);
     	
     }
     

@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 import com.EmployeePortal.socgen.Enums.Gender;
 @Entity
@@ -26,29 +25,24 @@ public class Employee {
 
 	@Column(name = "first_name")
 	@NotBlank(message = "First Name can not be null")
-	@NotEmpty(message = "First Name can not be Empty")
 	private String firstName;
 
 	@Column(name = "last_name")
 	@NotBlank(message = "Last Name can not be null")
-	@NotEmpty(message = "Last Name can not be Empty")
 	private String lastName;
 
 	@Column(name = "gender")
 	@NotBlank(message = "Gender can not be null")
-	@NotEmpty(message = "Gender can not be Empty")
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	
 	@Column(name = "department")
 	@NotBlank(message = "Department can not be null")
-	@NotEmpty(message = "Department can not be Empty")
 	private String department;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_of_birth")
 	@NotBlank(message = "Date of Birth can not be null")
-	@NotEmpty(message = "Date of Birth can not be Empty")
 	private Date dateOfBirth;
 
 	public String getFirstName() {
