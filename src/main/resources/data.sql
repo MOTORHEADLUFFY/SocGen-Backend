@@ -21,4 +21,4 @@ CREATE TABLE EMPLOYEE(
         (null, '2020-10-2', 'Left-Wing', 'Cristiano','M', 'Ronaldo'),
         (null, '2019-5-22', 'GoalKeeper', 'Thibaut','M', 'Courtios'),
         (null, '2017-05-06', 'Striker', 'Timo','M', 'Werner'),
-        (null, '2012-11-08', 'Striker', 'Kim','M', 'Hunter');
+        (null, '2012-11-08', 'Striker', 'Kim','F', 'Hunter');

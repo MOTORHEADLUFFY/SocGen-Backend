@@ -18,21 +18,21 @@ public class EmployeeService {
 
 	@Autowired
 	EmployeeRepository employeeRepository;
-	
+
 	public Response saveEmployee(Employee employee) {
 		Response response = new Response();
 		try {
 			employeeRepository.save(employee);
 			response.setResponseCode(Constants.SUCCESS_CODE);
 			response.setResponseMessage(Constants.POST_SUCCESS);
-		} catch(ConstraintViolationException ex) {
+		} catch (ConstraintViolationException ex) {
 			String s = "";
 			response.setResponseCode(Constants.ERROR_CODE);
 			for (ConstraintViolation<?> element : ex.getConstraintViolations()) {
 				s += element.getMessage() + ",";
 			}
 			response.setResponseMessage(s);
-		} catch(Exception ex) {
+		} catch (Exception ex) {
 			response.setResponseCode(Constants.ERROR_CODE);
 			response.setResponseMessage(Constants.POST_ERROR);
 		}
@@ -41,6 +41,19 @@ public class EmployeeService {
 
 	public List<Employee> getAllEmployees() {
 		return employeeRepository.findAll();
+	}
+
+	public Response deleteAllEmployees() {
+		Response response = new Response();
+		try {
+			employeeRepository.deleteAll();
+			response.setResponseCode(Constants.SUCCESS_CODE);
+			response.setResponseMessage(Constants.DELETE_SUCCESS);
+		} catch (Exception ex) {
+			response.setResponseCode(Constants.ERROR_CODE);
+			response.setResponseMessage(Constants.DELETE_ERROR);
+		}
+		return response;
 	}
 
 }

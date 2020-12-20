@@ -35,9 +35,15 @@ public class EmployeeController {
 		return response;
 	}
 
-	@GetMapping("getAllEmployees")
+	@GetMapping("/getAllEmployees")
 	@ResponseBody
 	public List<Employee> getAllEmployees() {
 		return service.getAllEmployees();
+	}
+	
+	@GetMapping("/deleteAllEmployees")
+	@ResponseBody
+	public Response deleteAllEmployees() {
+		return service.deleteAllEmployees();
 	}
 }
