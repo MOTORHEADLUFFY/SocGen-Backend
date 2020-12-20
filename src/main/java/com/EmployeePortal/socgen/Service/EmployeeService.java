@@ -1,6 +1,5 @@
 package com.EmployeePortal.socgen.Service;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.ConstraintViolation;
@@ -21,7 +20,6 @@ public class EmployeeService {
 	EmployeeRepository employeeRepository;
 	
 	public Response saveEmployee(Employee employee) {
-		employee.setDateOfBirth(new Date());
 		Response response = new Response();
 		try {
 			employeeRepository.save(employee);
@@ -34,6 +32,9 @@ public class EmployeeService {
 				s += element.getMessage() + ",";
 			}
 			response.setResponseMessage(s);
+		} catch(Exception ex) {
+			response.setResponseCode(Constants.ERROR_CODE);
+			response.setResponseMessage(Constants.POST_ERROR);
 		}
 		return response;
 	}

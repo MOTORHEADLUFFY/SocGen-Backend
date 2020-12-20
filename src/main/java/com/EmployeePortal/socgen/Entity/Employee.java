@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +13,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
+import com.EmployeePortal.socgen.Enums.Gender;
 @Entity
 @Table
 public class Employee {
@@ -20,22 +25,30 @@ public class Employee {
 	private int id;
 
 	@Column(name = "first_name")
-	@NotBlank(message = "First Name may not be null")
+	@NotBlank(message = "First Name can not be null")
+	@NotEmpty(message = "First Name can not be Empty")
 	private String firstName;
 
 	@Column(name = "last_name")
-	@NotBlank(message = "Last Name may not be null")
+	@NotBlank(message = "Last Name can not be null")
+	@NotEmpty(message = "Last Name can not be Empty")
 	private String lastName;
 
 	@Column(name = "gender")
-	private char gender;
+	@NotBlank(message = "Gender can not be null")
+	@NotEmpty(message = "Gender can not be Empty")
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
 	
 	@Column(name = "department")
-	@NotBlank(message = "Departement may not be null")
+	@NotBlank(message = "Department can not be null")
+	@NotEmpty(message = "Department can not be Empty")
 	private String department;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_of_birth")
+	@NotBlank(message = "Date of Birth can not be null")
+	@NotEmpty(message = "Date of Birth can not be Empty")
 	private Date dateOfBirth;
 
 	public String getFirstName() {
@@ -52,14 +65,6 @@ public class Employee {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public char getGender() {
-		return gender;
-	}
-
-	public void setGender(char gender) {
-		this.gender = gender;
 	}
 
 	public String getDepartment() {
@@ -84,6 +89,14 @@ public class Employee {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 	
 }
